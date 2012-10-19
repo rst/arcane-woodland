@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014232449) do
+ActiveRecord::Schema.define(:version => 20121019213745) do
+
+  create_table "spots", :force => true do |t|
+    t.string   "name",       :limit => 100,                    :null => false
+    t.string   "addr1",      :limit => 100,                    :null => false
+    t.string   "addr2",      :limit => 100,                    :null => false
+    t.boolean  "has_food",                  :default => false, :null => false
+    t.boolean  "has_drinks",                :default => false, :null => false
+    t.boolean  "has_music",                 :default => false, :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
