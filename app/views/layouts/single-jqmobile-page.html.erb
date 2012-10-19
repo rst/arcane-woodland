@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for :title %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+  <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+ <div data-role="page">
+  <div data-role="header">
+    <h1><%= content_for :title %></h1>
+    <%= content_for :header_links %>
+  </div>
+
+  <div data-role="content">
+    <%= (content_for(:content).blank?)? yield : yield(:content) %>
+  </div>
+
+  <% unless content_for(:footer).empty? %>
+    <div data-role="footer">
+      <%= content_for :footer %>
+    </div>
+  <% end %>
+  
+ </div>
+
+</body>
+</html>
