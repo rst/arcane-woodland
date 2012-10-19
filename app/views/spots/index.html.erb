@@ -1,0 +1,13 @@
+<%= content_for :title do %>
+  Spots on File
+<% end %>
+
+<% if @spots.empty? %>
+  No spots yet<br/>
+<% else %>
+  <ul data-role="listview">
+    <% @spots.each do |spot| %>
+      <li><%= link_to spot.name, spot_url( spot ) %></li>
+    <% end %>
+  </ul>
+<% end %>

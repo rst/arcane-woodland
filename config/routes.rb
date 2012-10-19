@@ -1,7 +1,8 @@
 Afinder::Application.routes.draw do
 
   devise_for :users
-  root :to => 'home#index'
+  root :to => 'spots#index'
+  resources :spots
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
