@@ -2,6 +2,10 @@
   Spots on File
 <% end %>
 
+<%= content_for :footer do %>
+  <%= link_to "Add spot", new_spot_url, "data-role" => "button" %>
+<% end %>
+
 <% if @spots.empty? %>
   No spots yet<br/>
 <% else %>
