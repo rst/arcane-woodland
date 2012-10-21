@@ -4,7 +4,8 @@ class Spot < ActiveRecord::Base
 
   attr_accessible :name, :addr1, :addr2, :latitude, :longitude, *FLAG_ATTRS
 
-  validates :name, :address, presence: true
+  validates :name,     :address,   presence: true
+  validates :latitude, :longitude, presence: true, numericality: true
 
   def address
     if addr2.blank?

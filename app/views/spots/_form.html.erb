@@ -1,12 +1,19 @@
 <%= form_for @spot do |f| %>
   
   <div><%= f.label :name %><%= f.text_field :name %></div>
+
   <div><%= f.label :addr1, "Address" %><%= f.text_field :addr1 %></div>
   <div><%= f.label :addr2, "(contd)" %><%= f.text_field :addr2 %></div>
+
+  <div><%= f.label :longitude, "Longitude"%><%= f.text_field :longitude %></div>
+  <div><%= f.label :latitude,  "Latitude" %><%= f.text_field :latitude  %></div>
+  <div id="geo_status">
+    <%= if @spot.latitude.nil? then "NOT LOCATED" else "LOCATED" end %>
+  </div>
 
   <% Spot::FLAG_ATTRS.each do |attr| %>
     <div><%= f.check_box attr %><%= f.label attr %></div>
   <% end %>
-  
+
   <%= f.submit "Save" %>
 <% end %>

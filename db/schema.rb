@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(:version => 20121019213745) do
     t.string   "name",       :limit => 100,                    :null => false
     t.string   "addr1",      :limit => 100,                    :null => false
     t.string   "addr2",      :limit => 100,                    :null => false
+    t.float    "latitude",                                     :null => false
+    t.float    "longitude",                                    :null => false
     t.boolean  "has_food",                  :default => false, :null => false
     t.boolean  "has_drinks",                :default => false, :null => false
     t.boolean  "has_music",                 :default => false, :null => false
