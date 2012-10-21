@@ -1,6 +1,7 @@
 class SpotsController < ApplicationController
 
   before_filter :authenticate_user!
-  resources_controller_for :spots
+  inherit_resources             # actually defines standard REST actions
+  respond_to :html
 
 end

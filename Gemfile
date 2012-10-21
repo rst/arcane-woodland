@@ -22,7 +22,7 @@ end
 gem 'jquery-rails'
 
 gem 'devise'
-gem 'rc_rails'
+gem 'inherited_resources' # bad name; provides standard REST controller actions
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
