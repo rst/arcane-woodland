@@ -43,5 +43,6 @@ function load_map( map_div, map_div_id, spots ) {
                        { center: center, 
                          zoom: 14,
                          layers: [ tiles, point_layer ]});
+  map.invalidateSize();
   // ... and maybe map.addControl ...
 }
