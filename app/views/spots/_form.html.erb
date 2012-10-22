@@ -1,4 +1,4 @@
-<%= form_for @spot do |f| %>
+<%= form_for @spot, :id => spot_form_id(@spot) do |f| %>
   
   <div><%= f.label :name %><%= f.text_field :name %></div>
 
@@ -16,4 +16,14 @@
   <% end %>
 
   <%= f.submit "Save" %>
+
 <% end %>
+
+<% @page_id = dom_id(@spot, :page_for_spot) %>
+
+<script>
+  // Well, let's call it *minimally* intrusive Javascript...
+  $("#<%= @page_id %>").bind("pageinit", 
+    function(){ init_spot_geocode($("#<%= spot_form_id(@spot) %>")); });
+</script>
+
