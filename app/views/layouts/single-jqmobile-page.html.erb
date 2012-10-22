@@ -9,7 +9,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
- <div data-role="page">
+ <div data-role="page"
+   <% unless @page_id.nil? %>
+    id="<%= @page_id %>"
+   <% end %>
+ >
   <div data-role="header">
     <h1><%= content_for :title %></h1>
     <%= content_for :header_links %>
