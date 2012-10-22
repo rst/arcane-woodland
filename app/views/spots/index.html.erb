@@ -6,12 +6,16 @@
   <%= link_to "Add spot", new_spot_url, "data-role" => "button" %>
 <% end %>
 
+<% @page_id = "spots_edit_map" %>
+
 <% if @spots.empty? %>
   No spots yet<br/>
 <% else %>
-  <ul data-role="listview">
-    <% @spots.each do |spot| %>
-      <li><%= link_to spot.name, spot_url( spot ) %></li>
-    <% end %>
-  </ul>
+  <div id="spots_edit_map_canvas" style="float:left;width:70%;height:100%">
+  </div>
+  <script> 
+    $("#<%= @page_id %>").bind("pageinit",
+      function() { setup_map("<%= spots_url %>", "spots_edit_map_canvas") });
+  </script>
 <% end %>
+
