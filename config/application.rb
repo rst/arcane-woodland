@@ -61,6 +61,11 @@ module Afinder
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    # Heroku wants to precompile assets without a working DB configured;
+    # a full app-initialization will try to connect, so they recommend this 
+    # to cut that out.
+    config.assets.initialize_on_precompile = false
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
