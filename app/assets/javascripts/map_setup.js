@@ -1,18 +1,26 @@
 // Cargo-culted from a Leaflet stock example...
 
 function setup_map( map_url, map_div_id ) {
-
-  var map_div = $("#"+map_div_id);
   
   // Adjust size of map_div.  Sample code also arranges to do this on
   // window resize.  Need to see where that's necessary; skipping for now.
 
+  var map_div = $("#"+map_div_id);
+  
   map_div.height( $(window).height() );
   map_div.width(  $(window).width() );
 
-  // Get points and load the map; this replaces a timeout delay in the
-  // original sample code.  (Would be best to start loading tiles while
-  // waiting for the point data; later...)
+  // Delay rest of setup 400 msec., per code cargo-culted from a Leaflet
+  // example
+
+  setTimeout( function() { finish_setup_map( map_url, map_div, map_div_id ) },
+              400 );
+}
+
+function finish_setup_map( map_url, map_div, map_div_id ) {
+
+  // Get points and load the map.  Would be best to start loading tiles 
+  // while waiting for the point data; later...
 
   $.get( map_url, { format: "json" },
          function(data) {
@@ -43,6 +51,5 @@ function load_map( map_div, map_div_id, spots ) {
                        { center: center, 
                          zoom: 14,
                          layers: [ tiles, point_layer ]});
-  map._onResize();
   // ... and maybe map.addControl ...
 }
