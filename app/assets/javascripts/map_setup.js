@@ -7,7 +7,7 @@ function setup_map( map_url, map_div_id ) {
   // Adjust size of map_div.  Sample code also arranges to do this on
   // window resize.  Need to see where that's necessary; skipping for now.
 
-  map_div.height( $(window).height() - 150 );
+  map_div.height( $(window).height() );
   map_div.width(  $(window).width() );
 
   // Get points and load the map; this replaces a timeout delay in the

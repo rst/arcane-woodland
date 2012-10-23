@@ -2,8 +2,8 @@
   Spots on File
 <% end %>
 
-<%= content_for :footer do %>
-  <%= link_to "Add spot", new_spot_url, "data-role" => "button" %>
+<%= content_for :extra_header_links do %>
+  <%= link_to "Add spot", new_spot_url, "class" => "ui-btn-left" %>
 <% end %>
 
 <% @page_id = "spots_edit_map" %>

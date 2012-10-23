@@ -1,5 +1,6 @@
 <% content_for :header_links do %>
   <%= link_to "Logout", destroy_user_session_path, :method => :delete, 
                         "class"=>"ui-btn-right" %>
+  <%= content_for :extra_header_links %>
 <% end %>
 <%= render :template => 'layouts/devise-mobile-page' %>

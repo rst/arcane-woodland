@@ -20,7 +20,7 @@
     id="<%= @page_id %>"
    <% end %>
  >
-  <div data-role="header">
+  <div data-role="header" data-position="fixed">
     <h1><%= content_for :title %></h1>
     <%= content_for :header_links %>
   </div>
@@ -30,7 +30,7 @@
   </div>
 
   <% unless content_for(:footer).empty? %>
-    <div data-role="footer">
+    <div data-role="footer" data-position="fixed">
       <%= content_for :footer %>
     </div>
   <% end %>
