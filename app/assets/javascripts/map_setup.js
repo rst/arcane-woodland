@@ -34,7 +34,7 @@ function load_map( map_div, map_div_id, spots ) {
   for (var i = 0; i < spots.length; i++ ) {
     var spot = spots[i];
     var posn = new L.LatLng( spot.latitude, spot.longitude );
-    var marker = new L.Marker( posn ).bindPopup( spot.name ); // XXX XSS!!!
+    var marker = new L.Marker( posn ).bindPopup( spot_link_markup(spot) );
     point_layer.addLayer( marker );
   }
 
@@ -52,4 +52,16 @@ function load_map( map_div, map_div_id, spots ) {
                          zoom: 14,
                          layers: [ tiles, point_layer ]});
   // ... and maybe map.addControl ...
+}
+
+// XXX first mobile-specific JS.  Would need to adjust for a desktop version.
+
+function spot_link_markup( spot ) {
+  var url = "/spots/" + spot.id;
+  var base = $('<div><a/></div>');
+  anchor = base.find("a");
+  anchor.attr('href', url );
+  anchor.attr('onclick', "$.mobile.changePage('" + url + "')");
+  anchor.text( spot.name );
+  return base.html();
 }
