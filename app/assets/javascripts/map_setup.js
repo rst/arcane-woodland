@@ -61,7 +61,7 @@ function spot_link_markup( spot ) {
   var base = $('<div><a/></div>');
   anchor = base.find("a");
   anchor.attr('href', url );
-  anchor.attr('onclick', "$.mobile.changePage('" + url + "')");
+  anchor.attr('onclick', "$.mobile.changePage('" + url + "'); return false");
   anchor.text( spot.name );
   return base.html();
 }
