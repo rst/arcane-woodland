@@ -1,12 +1,25 @@
 // Cargo-culted from a Leaflet stock example...
 
-function setup_map( map_url, map_div_id ) {
+function setup_map( map_url, page_div, map_div_id ) {
   
+  // Create an inner <div> to actually hold the map, wiping out any
+  // that was already there (from an earlier load of the same page
+  // by jQuery mobile).
+
+  var inner_div_id = map_div_id + "_inner";
+  $("#"+inner_div_id).remove();
+
+  var inner_div = $("<div/>").attr('id', inner_div_id);
+  inner_div.appendTo($("#"+map_div_id, page_div));
+
+  // We're playing with the inner-div for the rest...
+
+  map_div = inner_div;
+  map_div_id = inner_div_id;
+
   // Adjust size of map_div.  Sample code also arranges to do this on
   // window resize.  Need to see where that's necessary; skipping for now.
 
-  var map_div = $("#"+map_div_id);
-  
   map_div.height( $(window).height() );
   map_div.width(  $(window).width() );
 

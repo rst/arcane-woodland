@@ -7,6 +7,7 @@
 <% end %>
 
 <% @page_id = "spots_edit_map" %>
+<% @page_url = "/spots/" %>
 
 <% if @spots.empty? %>
   No spots yet<br/>
@@ -14,8 +15,10 @@
   <div id="spots_edit_map_canvas" style="float:left;width:70%;height:100%">
   </div>
   <script> 
-    $("#<%= @page_id %>").bind("pageinit",
-      function() { setup_map("<%= spots_url %>", "spots_edit_map_canvas") });
+    $(document).delegate("#<%= @page_id %>", "pageinit",
+      function(evt) { setup_map("<%= spots_url %>", 
+                                evt.target,
+                                "spots_edit_map_canvas") });
   </script>
 <% end %>
 
