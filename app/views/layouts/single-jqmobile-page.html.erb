@@ -19,6 +19,9 @@
    <% unless @page_id.nil? %>
     id="<%= @page_id %>"
    <% end %>
+   <% unless @page_url.nil? %>
+    data-url="<%= @page_url %>"
+   <% end %>
  >
   <div data-role="header" data-position="fixed" data-tap-toggle="false">
     <h1><%= content_for :title %></h1>
