@@ -10,15 +10,6 @@ function setup_map( map_url, map_div_id ) {
   map_div.height( $(window).height() );
   map_div.width(  $(window).width() );
 
-  // Delay rest of setup 400 msec., per code cargo-culted from a Leaflet
-  // example
-
-  setTimeout( function() { finish_setup_map( map_url, map_div, map_div_id ) },
-              400 );
-}
-
-function finish_setup_map( map_url, map_div, map_div_id ) {
-
   // Get points and load the map.  Would be best to start loading tiles 
   // while waiting for the point data; later...
 
