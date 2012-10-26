@@ -13,8 +13,9 @@
   <div><%= f.label :addr1, "Address" %><%= f.text_field :addr1 %></div>
   <div><%= f.label :addr2, "(contd)" %><%= f.text_field :addr2 %></div>
 
-  <div><%= f.label :longitude, "Longitude"%><%= f.text_field :longitude %></div>
-  <div><%= f.label :latitude,  "Latitude" %><%= f.text_field :latitude  %></div>
+  <%= f.hidden_field :longitude %>
+  <%= f.hidden_field :latitude  %>
+
   <div id="geo_status">
     <%= if @spot.latitude.nil? then "NOT LOCATED" else "LOCATED" end %>
   </div>
