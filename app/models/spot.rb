@@ -4,8 +4,7 @@ class Spot < ActiveRecord::Base
 
   attr_accessible :name, :addr1, :addr2, :latitude, :longitude, *FLAG_ATTRS
 
-  validates :name,     :address,   presence: true
-  validates :latitude, :longitude, presence: true, numericality: true
+  validates :name, :address,   presence: true
 
   def address
     if addr2.blank?
@@ -19,7 +18,10 @@ class Spot < ActiveRecord::Base
 
   validate do
     unless FLAG_ATTRS.any?{ |a| self.send( a ) }
-      errors.add :base, "Must offer at least one service for inclusion"
+      errors.add :base, "Spot must offer at least one service"
+    end
+    if latitude.blank? || longitude.blank?
+      errors.add :base, "Could not resolve address to a map location"
     end
   end
 

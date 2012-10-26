@@ -7,7 +7,7 @@ class SpotTest < ActiveSupport::TestCase
     spot = Spot.new
     has_valid_svcs = -> { 
       spot.valid?; 
-      !spot.errors[:base].any?{ |x| x.match( /Must offer/ ) }
+      !spot.errors[:base].any?{ |x| x.match( /Must offer/i ) }
     }
     assert !has_valid_svcs.call
 
