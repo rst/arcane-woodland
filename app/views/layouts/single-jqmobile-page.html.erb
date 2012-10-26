@@ -23,7 +23,11 @@
     data-url="<%= @mobile_page_url %>"
    <% end %>
  >
-  <div data-role="header" data-position="fixed" data-tap-toggle="false">
+  <div data-role="header" 
+    <% unless @mobile_page_movable_headers_footers %>
+      data-position="fixed" data-tap-toggle="false"
+    <% end %>
+  >
     <h1><%= content_for :title %></h1>
     <%= content_for :header_links %>
   </div>
@@ -33,7 +37,11 @@
   </div>
 
   <% unless content_for(:footer).empty? %>
-    <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+    <div data-role="footer"
+      <% unless @mobile_page_movable_headers_footers %>
+        data-position="fixed" data-tap-toggle="false"
+      <% end %>
+    >
       <%= content_for :footer %>
     </div>
   <% end %>

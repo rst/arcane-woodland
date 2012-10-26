@@ -20,6 +20,10 @@ module ApplicationHelper
     @mobile_page_url = arg
   end
 
+  def set_mobile_page_movable_headers_footers( arg )
+    @mobile_page_movable_headers_footers = arg
+  end
+
   def on_mobile_page_load
     if @mobile_page_id.nil?
       raise RuntimeError, "Have on_mobile_page_load, but no set_mobile_page_id"
