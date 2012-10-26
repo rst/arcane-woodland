@@ -1,6 +1,6 @@
 // Cargo-culted from a Leaflet stock example...
 
-function setup_map( map_url, page_div, map_div_id ) {
+function setup_map( map_url, page_div, map_div_id, highlight_spot_id ) {
   
   // Create an inner <div> to actually hold the map, wiping out any
   // that was already there (from an earlier load of the same page
@@ -28,18 +28,28 @@ function setup_map( map_url, page_div, map_div_id ) {
 
   $.get( map_url, { format: "json" },
          function(data) {
-           load_map( map_div, map_div_id, data);
+           load_map( map_div, map_div_id, data, highlight_spot_id );
          }, "json")
 
 }
 
-function load_map( map_div, map_div_id, spots ) {
+function load_map( map_div, map_div_id, spots, highlight_spot_id ) {
+
   var point_layer = new L.LayerGroup();
+  var center_spot = spots[0];
+  var highlighted_marker = null;
+
   for (var i = 0; i < spots.length; i++ ) {
+
     var spot = spots[i];
     var posn = new L.LatLng( spot.latitude, spot.longitude );
     var marker = new L.Marker( posn ).bindPopup( spot_link_markup(spot) );
     point_layer.addLayer( marker );
+
+    if (spot.id === highlight_spot_id) {
+      highlighted_marker = marker;
+      center_spot = spot;
+    }
   }
 
   var attribution = "Map data &copy; OpenStreetMap, Imagery &copy; CloudMade";
@@ -50,11 +60,14 @@ function load_map( map_div, map_div_id, spots ) {
   var url = 'http://{s}.tile.cloudmade.com/8ee2a50541944fb9bcedded5165f09d9/{styleId}/256/{z}/{x}/{y}.png';
 
   var tiles = new L.TileLayer( url, mkstyle(22677) ); // not 999
-  var center = new L.LatLng( spots[0].latitude, spots[0].longitude );
+  var center = new L.LatLng( center_spot.latitude, center_spot.longitude );
   var map = new L.map( map_div_id, 
                        { center: center, 
                          zoom: 14,
                          layers: [ tiles, point_layer ]});
+
+  highlighted_marker.openPopup(); // It has to be on the map first!
+
   // ... and maybe map.addControl ...
 }
 

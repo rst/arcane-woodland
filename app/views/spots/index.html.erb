@@ -6,19 +6,16 @@
   <%= link_to "Add spot", new_spot_url, "class" => "ui-btn-left" %>
 <% end %>
 
-<% set_mobile_page_id( "spots_edit_map" ) %>
-<% set_mobile_page_url( "/spots/" ) %>
+<% set_mobile_page_id( request.path ) %>
+<% set_mobile_page_url( request.path ) %>
 <% set_mobile_page_movable_headers_footers( true ) %>
 
-<% if @spots.empty? %>
-  No spots yet<br/>
-<% else %>
-  <div id="spots_edit_map_canvas" style="float:left;width:70%;height:100%">
-  </div>
-  <%= on_mobile_page_load do %>
-    function(evt) { setup_map("<%= spots_url %>", 
-                              evt.target,
-                              "spots_edit_map_canvas") }
-  <% end %>
+<div id="spots_edit_map_canvas" style="float:left;width:70%;height:100%">
+</div>
+<%= on_mobile_page_load do %>
+  function(evt) { setup_map("<%= spots_url %>", 
+                            evt.target,
+                            "spots_edit_map_canvas",
+                            <%= @highlight_spot_id.to_json %>) }
 <% end %>
 

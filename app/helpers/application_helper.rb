@@ -10,7 +10,7 @@ module ApplicationHelper
     unless @mobile_page_id.nil?
       raise RuntimeError, "Already have mobile_page_id"
     end
-    @mobile_page_id = arg
+    @mobile_page_id = arg.gsub(/[^a-zA-Z0-9_\-:.]/,'')
   end
 
   def set_mobile_page_url( arg )

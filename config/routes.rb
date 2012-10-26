@@ -1,8 +1,14 @@
 Afinder::Application.routes.draw do
 
   devise_for :users
-  root :to => 'spots#index'
-  resources :spots
+
+  root :to => 'spots#signon_dummy'
+
+  resources :spots do
+    member do 
+      get 'show_on_map'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
