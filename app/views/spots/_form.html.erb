@@ -28,14 +28,13 @@
 
 <% end %>
 
-<% @page_id = dom_id(@spot, :page_for_spot) %>
-<% @page_url = (@spot.persisted?) ? edit_spot_url(@spot) : new_spot_url %>
+<% set_mobile_page_id( dom_id(@spot, :page_for_spot)) %>
+<% set_mobile_page_url( (@spot.persisted?) ? edit_spot_url(@spot) 
+                                           : new_spot_url) %>
 
-<script>
-  // Well, let's call it *minimally* intrusive Javascript...
-  $(document).delegate("#<%= @page_id %>", "pageinit", 
-    function(evt){ 
-      alert("init geocode");
-      init_spot_geocode($("#<%= spot_form_id(@spot) %>", evt.target)); });
-</script>
+<%= on_mobile_page_load do %>
+  function(evt){ 
+    init_spot_geocode($("#<%= spot_form_id(@spot) %>", evt.target)); 
+  }
+<% end %>
 

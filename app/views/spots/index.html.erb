@@ -6,19 +6,18 @@
   <%= link_to "Add spot", new_spot_url, "class" => "ui-btn-left" %>
 <% end %>
 
-<% @page_id = "spots_edit_map" %>
-<% @page_url = "/spots/" %>
+<% set_mobile_page_id( "spots_edit_map" ) %>
+<% set_mobile_page_url( "/spots/" ) %>
 
 <% if @spots.empty? %>
   No spots yet<br/>
 <% else %>
   <div id="spots_edit_map_canvas" style="float:left;width:70%;height:100%">
   </div>
-  <script> 
-    $(document).delegate("#<%= @page_id %>", "pageinit",
-      function(evt) { setup_map("<%= spots_url %>", 
-                                evt.target,
-                                "spots_edit_map_canvas") });
-  </script>
+  <%= on_mobile_page_load do %>
+    function(evt) { setup_map("<%= spots_url %>", 
+                              evt.target,
+                              "spots_edit_map_canvas") }
+  <% end %>
 <% end %>
 
