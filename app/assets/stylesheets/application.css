@@ -11,3 +11,10 @@
  *= require_self
  *= require_tree .
  */
+
+.fading_overlay {
+  position: absolute;
+  top: 10px;
+  left: 60px;
+  z-index: 99;
+}

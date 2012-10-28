@@ -13,3 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+function fade_fading_overlays() {
+  setTimeout(function(){
+    $(".fading_overlay").fadeOut("slow", function(){
+       $(this).remove();
+    })},
+  3000);
+}
