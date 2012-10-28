@@ -10,6 +10,8 @@
 <% set_mobile_page_url( request.path ) %>
 <% set_mobile_page_movable_headers_footers( true ) %>
 
+<%= render :partial => 'shared/flash_inset_listview' %>
+
 <div id="spots_edit_map_canvas" style="float:left;width:70%;height:100%">
 </div>
 <%= on_mobile_page_load do %>

@@ -6,6 +6,9 @@ class SpotsController < ApplicationController
   respond_to :html
   respond_to :json, :only => :index
 
+  MAP_ACTIONS=[:index, :show_on_map]
+  layout 'single-jqmobile-page', :only => MAP_ACTIONS
+
   def signon_dummy
 
     # Would like to route "root :to => 'spots#index'" in routes.rb,
