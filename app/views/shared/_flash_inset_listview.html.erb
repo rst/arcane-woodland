@@ -1,5 +1,5 @@
 <% if [:error, :notice, :alert].any?{ |x| flash[x] } %>
-  <ul data-role="listview" data-inset="true">
+  <ul data-role="listview" data-inset="true" data-theme="e">
     <% [:error, :notice, :alert].each do |x| if flash[x] %>
       <li><%= flash[x] %></li>
     <% end end %>
