@@ -1,11 +1,5 @@
 <% content_for :content do %>
-  <% if [:error, :notice, :alert].any?{ |x| flash[x] } %>
-    <ul data-role="listview" data-inset="true">
-      <% [:error, :notice, :alert].each do |x| if flash[x] %>
-        <li><%= flash[x] %></li>
-      <% end end %>
-    </ul>
-  <% end %>
+  <%= render :partial => 'shared/flash_inset_listview' %>
   <%= (content_for(:devise_content).blank?) ? yield : 
           content_for(:devise_content) 
   %>
