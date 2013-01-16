@@ -15,13 +15,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
- <div data-role="page"
-   <% unless @mobile_page_id.nil? %>
-    id="<%= @mobile_page_id %>"
-   <% end %>
-   <% unless @mobile_page_url.nil? %>
-    data-url="<%= @mobile_page_url %>"
-   <% end %>
+ <div data-role="page" 
+      id="<%= mobile_page_id %>" 
+      data-url="<%= mobile_page_url %>"
  >
   <div data-role="header" 
     <% unless @mobile_page_movable_headers_footers %>

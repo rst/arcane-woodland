@@ -28,10 +28,6 @@
 
 <% end %>
 
-<% set_mobile_page_id( dom_id(@spot, :page_for_spot)) %>
-<% set_mobile_page_url( (@spot.persisted?) ? edit_spot_url(@spot) 
-                                           : new_spot_url) %>
-
 <%= on_mobile_page_load do %>
   function(evt){ 
     init_spot_geocode($("#<%= spot_form_id(@spot) %>", evt.target)); 
